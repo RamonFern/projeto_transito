@@ -8,8 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ramon.projeto_transito.domain.Categoria;
+import com.ramon.projeto_transito.domain.Cidade;
+import com.ramon.projeto_transito.domain.Estado;
 import com.ramon.projeto_transito.domain.Veiculo;
 import com.ramon.projeto_transito.repositories.CategoriaRepository;
+import com.ramon.projeto_transito.repositories.CidadeRepository;
+import com.ramon.projeto_transito.repositories.EstadoRepository;
 import com.ramon.projeto_transito.repositories.VeiculoRepository;
 
 @SpringBootApplication
@@ -20,6 +24,12 @@ public class ProjetoTransitoApplication implements CommandLineRunner{
 	
 	@Autowired
 	private VeiculoRepository veiculoRepository;
+	
+	@Autowired
+	private EstadoRepository estadoRepository;
+	
+	@Autowired
+	private CidadeRepository cidadeRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoTransitoApplication.class, args);
@@ -56,6 +66,25 @@ public class ProjetoTransitoApplication implements CommandLineRunner{
 		veiculoRepository.save(v1);
 		veiculoRepository.save(v2);
 		veiculoRepository.save(v3);
+		
+		
+		Estado est1 = new Estado(null, "Minas Gerais");
+		Estado est2 = new Estado(null, "São Paulo");
+
+		Cidade c1 = new Cidade(null, "Uberlândia", est1);
+		Cidade c2 = new Cidade(null, "São Paulo", est2);
+		Cidade c3 = new Cidade(null, "Campinas", est2);
+
+		est1.getCidades().add(c1);
+		est2.getCidades().add(c2);
+		est2.getCidades().add(c3);
+
+		estadoRepository.save(est1);
+		estadoRepository.save(est2);
+
+		cidadeRepository.save(c1);
+		cidadeRepository.save(c2);
+		cidadeRepository.save(c3);
 	}
 		
 }
