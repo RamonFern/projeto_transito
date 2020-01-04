@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Veiculo implements Serializable{
 	
@@ -27,6 +29,7 @@ public class Veiculo implements Serializable{
 	private String modelo;
 	private Double divida;
 	
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name="VEICULO_CATEGORIA",
 	           joinColumns = @JoinColumn(name="veiculo_id"),

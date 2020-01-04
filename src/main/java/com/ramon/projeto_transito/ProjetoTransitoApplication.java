@@ -46,6 +46,7 @@ public class ProjetoTransitoApplication implements CommandLineRunner{
 		v2.getCategorias().add(cat1);
 		v2.getCategorias().add(cat2);
 		v3.getCategorias().add(cat1);
+		v3.getCategorias().add(cat2);
 		
 		categoriaRepository.save(cat1);
 		categoriaRepository.save(cat2);

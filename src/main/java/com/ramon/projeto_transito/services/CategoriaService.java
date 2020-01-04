@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ramon.projeto_transito.domain.Categoria;
 import com.ramon.projeto_transito.repositories.CategoriaRepository;
+import com.ramon.projeto_transito.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
@@ -15,7 +16,9 @@ public class CategoriaService {
 	private CategoriaRepository repo;
 
 	public Categoria buscar(Integer id) {
-		Optional<Categoria> obj = repo.findById(id); 
-		return obj.orElse(null); 
+		Optional<Categoria> obj = repo.findById(id);
+
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+                          "Objeto não encontrado! id " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 }
