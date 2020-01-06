@@ -9,11 +9,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ramon.projeto_transito.domain.Categoria;
 import com.ramon.projeto_transito.domain.Cidade;
+import com.ramon.projeto_transito.domain.Endereco;
 import com.ramon.projeto_transito.domain.Estado;
+import com.ramon.projeto_transito.domain.Pessoa;
 import com.ramon.projeto_transito.domain.Veiculo;
+import com.ramon.projeto_transito.domain.enums.TipoPessoa;
 import com.ramon.projeto_transito.repositories.CategoriaRepository;
 import com.ramon.projeto_transito.repositories.CidadeRepository;
+import com.ramon.projeto_transito.repositories.EnderecoRepository;
 import com.ramon.projeto_transito.repositories.EstadoRepository;
+import com.ramon.projeto_transito.repositories.PessoaRepository;
 import com.ramon.projeto_transito.repositories.VeiculoRepository;
 
 @SpringBootApplication
@@ -30,6 +35,12 @@ public class ProjetoTransitoApplication implements CommandLineRunner{
 	
 	@Autowired
 	private CidadeRepository cidadeRepository;
+	
+	@Autowired
+	private PessoaRepository pessoaRepository;
+	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoTransitoApplication.class, args);
@@ -85,6 +96,24 @@ public class ProjetoTransitoApplication implements CommandLineRunner{
 		cidadeRepository.save(c1);
 		cidadeRepository.save(c2);
 		cidadeRepository.save(c3);
+		
+		Pessoa pess = new Pessoa(null, "Maria Silva", "maria@gmail.com", "45346333564", TipoPessoa.CONDUTORINFRATOR);
+
+		//cli1.getTelefones().addAll(Arrays.asList("234231144","32523423"));
+		pess.getTelefones().add("222222222");
+		pess.getTelefones().add("333333333");
+
+		Endereco e1 = new Endereco(null, "Rua Flores", "342", "Apto 32", "Jardim", "65150-000", pess, c1);
+		Endereco e2 = new Endereco(null, "Rua Pr. Cícero", "100", "casa 05", "Vila Formosa", "2390-400", pess, c2);
+
+		//cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+		pess.getEnderecos().add(e1);
+		pess.getEnderecos().add(e2);
+
+		pessoaRepository.save(pess);
+		enderecoRepository.save(e1);
+		enderecoRepository.save(e2);
+		
 	}
 		
 }
