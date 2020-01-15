@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ramon.projeto_transito.domain.enums.TipoPessoa;
 
 @Entity
@@ -29,7 +28,6 @@ public class Pessoa implements Serializable{
 	private String cpf;
 	private Integer tipo;
 	
-	@JsonManagedReference
 	@OneToMany(mappedBy="pessoa")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
