@@ -1,6 +1,7 @@
 package com.ramon.projeto_transito.resouces;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,20 +44,20 @@ public class CategoriaResources {
 		return ResponseEntity.noContent().build();
 		
 	}
-	/*
+	
 	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
-	}*/
-/*
+	}
+
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<Categoria>> findAll() {
 		List<Categoria> list = service.findAll();
-		
-		//List<Categoria> listDto = list.stream().map(obj -> new Categoria(obj)).collect(Collectors.toList());
+		//List<Categoria> listaCategoria = list.stream().map(obj -> new Categoria()).collect(Collectors.toList());
+		//List<Categoria> lista = list.stream().map(obj -> new Categoria(obj)).collect(Collectors.toList());
 
-		return ResponseEntity.ok().body(listDto);
-	}*/
+		return ResponseEntity.ok().body(list);
+	}
 
 }
