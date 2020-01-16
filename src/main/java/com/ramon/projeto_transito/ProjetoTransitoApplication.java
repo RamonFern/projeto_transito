@@ -51,6 +51,11 @@ public class ProjetoTransitoApplication implements CommandLineRunner{
 		
 		Categoria cat1 = new Categoria(null, "Veiculo de Passageiros");
 		Categoria cat2 = new Categoria(null, "Veículo de Carga");
+		Categoria cat3 = new Categoria(null, "Veículo de duas rodas");
+		Categoria cat4 = new Categoria(null, "Veículos eletricos");
+		Categoria cat5 = new Categoria(null, "Tratores");
+		Categoria cat6 = new Categoria(null, "Mixto");
+		Categoria cat7 = new Categoria(null, "Veículo de propulsão animal");
 		
 		Veiculo v1 = new Veiculo(null, "HGT-1234","HONDA CIVIC", 2000.00);
 		Veiculo v2 = new Veiculo(null, "XZC-9078","F-250", 800.00);
@@ -71,8 +76,13 @@ public class ProjetoTransitoApplication implements CommandLineRunner{
 		
 		categoriaRepository.save(cat1);
 		categoriaRepository.save(cat2);
+		categoriaRepository.save(cat3);
+		categoriaRepository.save(cat4);
+		categoriaRepository.save(cat5);
+		categoriaRepository.save(cat6);
+		categoriaRepository.save(cat7);
 		
-	    // categoriaRepository.save(Arrays.asList(cat1, cat2));
+	    // categoriaRepository.save(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
 		
 		veiculoRepository.save(v1);
 		veiculoRepository.save(v2);
