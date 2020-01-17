@@ -13,6 +13,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.ramon.projeto_transito.domain.enums.TipoPessoa;
 
@@ -23,7 +27,13 @@ public class Pessoa implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
+	@NotEmpty(message="Preenchimento Obrigatório")
+	@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
 	private String nome;
+	
+	@NotEmpty(message="Preenchimento Obrigatório")
+	@Email(message="Email inválido")
 	private String email;
 	private String cpf;
 	private Integer tipo;
@@ -41,10 +51,11 @@ public class Pessoa implements Serializable{
 	public Pessoa(Integer id, String nome, String email, String cpf, TipoPessoa tipo) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.email = email;
-		this.cpf = cpf;
-		this.tipo = tipo.getCod();
+		this.nome = (nome == null) ? null : nome;
+		this.email = (email == null) ? null : email;
+		this.cpf = (cpf == null) ? null : cpf;
+		this.tipo = (tipo == null) ? null : tipo.getCod();
+		//this.tipo = tipo.getCod();
 	}
 
 	public Integer getId() {
