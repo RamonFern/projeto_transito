@@ -51,11 +51,10 @@ public class Pessoa implements Serializable{
 	public Pessoa(Integer id, String nome, String email, String cpf, TipoPessoa tipo) {
 		super();
 		this.id = id;
-		this.nome = (nome == null) ? null : nome;
-		this.email = (email == null) ? null : email;
-		this.cpf = (cpf == null) ? null : cpf;
+		this.nome = nome;
+		this.email = email;
+		this.cpf = cpf;
 		this.tipo = (tipo == null) ? null : tipo.getCod();
-		//this.tipo = tipo.getCod();
 	}
 
 	public Integer getId() {
